@@ -1,10 +1,16 @@
 function getComputerChoice() {
     let number = Math.floor((Math.random() * 3));
     if (number == 0) {
-        return "Rock";
+        return computerSelection = "Rock";
     } else if (number == 1) {
-        return "Paper";
+        return computerSelection = "Paper";
     } else {
-        return "Scissors";
+        return computerSelection = "Scissors";
     }
+}
+
+let playerSelection = prompt("Select your choice.", "");
+
+function playround(playerSelection, computerSelection) {
+
 }
