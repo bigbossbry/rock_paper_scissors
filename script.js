@@ -17,14 +17,14 @@ function capitalize(word1) {
     let wordLength = word1.length;
     return letter.toUpperCase() + lower.slice(1,wordLength);
 }
-let i=0;
-let c=0;
+let playerScore=0;
+let computerScore=0;
 
 function playRound(playerSelection, computerSelection) {
     switch (true) {
         case (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock"):
-            console.log(`Player wins. ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}. The score is ${i} to ${c}`);
-            return ++i;
+            console.log(`Player wins. ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}. The score is ${playerScore} to ${computerScore}`);
+            return ++playerScore;
             break;
 
         case (playerSelection === computerSelection):
@@ -32,21 +32,21 @@ function playRound(playerSelection, computerSelection) {
             break;
 
         default:
-            console.log(`You lose. ${capitalize(computerSelection)} beats ${capitalize(playerSelection)} The score is ${i} to ${c}`);
-            return ++c;
+            console.log(`You lose. ${capitalize(computerSelection)} beats ${capitalize(playerSelection)} The score is ${playerScore} to ${computerScore}`);
+            return ++computerScore;
     }
 }
 
 function game() {
-    i = 0;
-    c = 0;
+    playerScore = 0;
+    computerScore = 0;
 
-    for (i=0; i < 3 && c < 3;) {
+    for (playerScore=0; playerScore < 3 && computerScore < 3;) {
         playRound(prompt(playerSelection), getComputerChoice());
-        if (i == 3) {
+        if (playerScore == 3) {
             return `The Player won.`;
             break;
-        } else if (c == 3 ) {
+        } else if (computerScore == 3 ) {
             return `The Computer won.`;
             break;
         }
