@@ -1,4 +1,4 @@
-//Computer selection
+//Make the computer choose a hand
 function getComputerChoice() {
     let number = Math.floor((Math.random() * 3));
     if (number == 0) {
@@ -26,32 +26,42 @@ function selectScissors () {
     playerSelection = "Scissors";
 }
 
-// Capitalize the first letter
-function capitalize(word1) {
-    let lower = word1.toLowerCase();
-    let letter = lower.substr(0,1);
-    let wordLength = word1.length;
-    return letter.toUpperCase() + lower.slice(1,wordLength);
-}
-
 let playerScore=0;
 let computerScore=0;
 
+const roundResult = document.querySelector('.round-result');
+const runningScore = document.querySelector('.running-score');
+const gameWinner = document.querySelector('.game-winner');
+
+
 function playRound(playerSelection, computerSelection) {
     switch (true) {
+
         case (playerSelection == "Rock" && computerSelection == "Scissors" || playerSelection == "Scissors" && computerSelection == "Paper" || playerSelection == "Paper" && computerSelection == "Rock"):
             ++playerScore
+            roundResult.textContent = `Player wins. You chose ${playerSelection}, and the computer chose ${computerSelection}.`;
+            runningScore.textContent = `The score is ${playerScore} to ${computerScore}`;
             console.log(`Player wins. ${playerSelection} beats ${computerSelection}. The score is ${playerScore} to ${computerScore}`);
-            return playerScore;
+            if (playerScore == 5) {
+                gameWinner.textContent = "You win the game!";
+            }
+            return;
 
         case (playerSelection === computerSelection):
+            roundResult.textContent = `It's a tie. You and the computer both chose ${playerSelection}`;
+            runningScore.textContent = `The score is ${playerScore} to ${computerScore}`;
             console.log(`It's a tie. You and the computer both chose ${playerSelection}`);
             break;
 
         default:
             ++computerScore
+            roundResult.textContent = `Computer wins. You chose ${playerSelection}, and the computer chose ${computerSelection}.`;
+            runningScore.textContent = `The score is ${playerScore} to ${computerScore}`;
             console.log(`You lose. ${computerSelection} beats ${playerSelection} The score is ${playerScore} to ${computerScore}`);
-            return computerScore;
+            if (computerScore == 5) {
+                gameWinner.textContent = "The computer wins the game.";
+            }
+            return;
     }
 }
 
