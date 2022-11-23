@@ -42,7 +42,6 @@ function playRound(playerSelection, computerSelection) {
             ++playerScore
             roundResult.textContent = `Player wins. You chose ${playerSelection}, and the computer chose ${computerSelection}.`;
             runningScore.textContent = `The score is ${playerScore} to ${computerScore}`;
-            console.log(`Player wins. ${playerSelection} beats ${computerSelection}. The score is ${playerScore} to ${computerScore}`);
             if (playerScore == 5) {
                 gameWinner.textContent = "You win the game!";
             }
@@ -51,14 +50,12 @@ function playRound(playerSelection, computerSelection) {
         case (playerSelection === computerSelection):
             roundResult.textContent = `It's a tie. You and the computer both chose ${playerSelection}`;
             runningScore.textContent = `The score is ${playerScore} to ${computerScore}`;
-            console.log(`It's a tie. You and the computer both chose ${playerSelection}`);
             break;
 
         default:
             ++computerScore
             roundResult.textContent = `Computer wins. You chose ${playerSelection}, and the computer chose ${computerSelection}.`;
             runningScore.textContent = `The score is ${playerScore} to ${computerScore}`;
-            console.log(`You lose. ${computerSelection} beats ${playerSelection} The score is ${playerScore} to ${computerScore}`);
             if (computerScore == 5) {
                 gameWinner.textContent = "The computer wins the game.";
             }
