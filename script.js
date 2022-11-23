@@ -29,11 +29,12 @@ function selectScissors () {
 let playerScore=0;
 let computerScore=0;
 
+// div references
 const roundResult = document.querySelector('.round-result');
 const runningScore = document.querySelector('.running-score');
 const gameWinner = document.querySelector('.game-winner');
 
-
+// Gameplay function
 function playRound(playerSelection, computerSelection) {
     switch (true) {
 
@@ -82,21 +83,6 @@ function playRoundScissors() {
     getComputerChoice();
     playRound(playerSelection, computerSelection);
 }
-
-/*
-function game() {
-    playerScore = 0;
-    computerScore = 0;
-
-    for (playerScore=0; playerScore < 3 && computerScore < 3;) {
-        playRound(playerSelection, getComputerChoice());
-        if (playerScore == 3) {
-            return `The Player won.`;
-        } else if (computerScore == 3 ) {
-            return `The Computer won.`;
-        }
-     }
-}*/
 
 // Buttons functionality
 const rockButton = document.querySelector('#rock');
