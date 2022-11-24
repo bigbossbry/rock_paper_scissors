@@ -10,24 +10,15 @@ function getComputerChoice() {
     }
 }
 
-
-// Player selection functions
+// Player selection function
 let playerSelection;
+const choices = document.querySelectorAll('.hand');
 
-function selectRock () {
-    playerSelection = "Rock";
+function selectHand(clickEvent) {
+    playerSelection = clickEvent.target.id;
+    getComputerChoice();
+    callPlayRound();
 }
-
-function selectPaper () {
-    playerSelection = "Paper";
-}
-
-function selectScissors () {
-    playerSelection = "Scissors";
-}
-
-let playerScore=0;
-let computerScore=0;
 
 // div references
 const roundResult = document.querySelector('.round-result');
@@ -35,6 +26,8 @@ const runningScore = document.querySelector('.running-score');
 const gameWinner = document.querySelector('.game-winner');
 
 // Gameplay function
+let playerScore=0;
+let computerScore=0;
 function playRound(playerSelection, computerSelection) {
     switch (true) {
 
@@ -63,30 +56,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function playRoundRock() {
-    selectRock();
-    getComputerChoice();
-    playRound(playerSelection, computerSelection);
-}
-
-function playRoundPaper() {
-    selectPaper();
-    getComputerChoice();
-    playRound(playerSelection, computerSelection);
-}
-
-function playRoundScissors() {
-    selectScissors();
-    getComputerChoice();
+function callPlayRound() {
     playRound(playerSelection, computerSelection);
 }
 
 // Buttons functionality
-const rockButton = document.querySelector('#rock');
-const paperButton = document.querySelector('#paper');
-const scissorsButton = document.querySelector('#scissors');
-rockButton.addEventListener('click', playRoundRock);
-paperButton.addEventListener('click', playRoundPaper);
-scissorsButton.addEventListener('click', playRoundScissors);
-
-
+choices.forEach((button) => {
+    button.addEventListener('click', selectHand)
+})
