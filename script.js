@@ -14,8 +14,8 @@ function getComputerChoice() {
 let playerSelection;
 const choices = document.querySelectorAll('.hand');
 
-function selectHand(clickEvent) {
-    playerSelection = clickEvent.target.id;
+function selectHand(clickTarget) {
+    playerSelection = clickTarget.target.id;
     getComputerChoice();
     callPlayRound();
 }
